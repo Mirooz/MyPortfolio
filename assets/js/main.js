@@ -349,3 +349,11 @@ function afficherPopup(url) {
     }
   });
 }
+
+if (window.location.hash && window.location.hash === '#projects') {
+  // Récupère l'élément de la section spécifiée par l'identifiant
+  var section = document.getElementById('projects');
+  
+  // Effectue le défilement vers la section en utilisant la méthode 'scrollIntoView'
+  section.scrollIntoView({ behavior: 'smooth' });
+}

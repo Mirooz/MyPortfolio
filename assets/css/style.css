@@ -1156,3 +1156,61 @@ section {
   background-color: #fff;
   padding: 20px;
 }
+
+.swiper-button-next,
+.swiper-button-prev {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  background-color: #000;
+  color: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  position: fixed;
+}
+
+.swiper-button-next::before,
+.swiper-button-prev::before {
+  content: '';
+}
+
+.swiper-button-next {
+  right: -20px;
+}
+
+.swiper-button-prev {
+  left: -20px;
+}
+
+.btnCustomRight{
+  top: 50%; right: 10px;position: fixed;
+  z-index: 100;
+  
+  opacity: 0.7;
+}
+
+.btnCustomLeft{
+  top: 50%; left: 310px;position: fixed;
+  z-index: 100;
+  
+  opacity: 0.7;
+
+}
+
+@media (max-width: 1199px) {
+
+  .btnCustomLeft{
+    top: 50%; left: 10px;position: fixed;
+    z-index: 100;
+    
+    opacity: 0.7;
+  
+  }
+}
