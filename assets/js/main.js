@@ -271,7 +271,7 @@
     document.getElementById("differenceAnnees").innerHTML = difference;
   }
 
-  document.addEventListener("DOMContentLoaded", function() {
+  document.addEventListener("DOMContentLoaded", function () {
     var dateNaissance = new Date("20 July 1993");
     var dateActuelle = new Date();
 
@@ -288,7 +288,55 @@
     document.getElementById('age').innerHTML = age + " ans";
   });
 
-  
+
+
   // Appel de la fonction lors du chargement de la page
   window.onload = mettreAJourDifference;
+
 })()
+
+function afficherContenu() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("contenu").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("GET", "./portfolio-details.html", true);
+  xhttp.send();
+}
+
+
+function afficherPopup(url) {
+  // Créer l'élément du popup
+  var popup = document.createElement('div');
+  popup.className = 'popup';
+
+  // Créer le contenu du popup en utilisant une requête AJAX pour charger le contenu du fichier
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      var popupContent = document.createElement('div');
+      popupContent.className = 'popup-content';
+      popupContent.innerHTML = this.responseText;
+
+      // Ajouter le contenu au popup
+      popup.appendChild(popupContent);
+
+      // Ajouter le popup à la page
+      var popupContainer = document.getElementById('popupContainer');
+      popupContainer.innerHTML = '';
+      popupContainer.appendChild(popup);
+    }
+  };
+  xhttp.open("GET", url, true);
+  xhttp.send();
+
+  // Fermer le popup lorsqu'on clique en dehors du contenu
+  popup.addEventListener('click', function(event) {
+    if (event.target === popup) {
+      var popupContainer = document.getElementById('popupContainer');
+      popupContainer.innerHTML = '';
+    }
+  });
+}
