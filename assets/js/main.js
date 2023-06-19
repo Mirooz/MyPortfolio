@@ -88,6 +88,9 @@
     onscroll(document, toggleBacktotop)
   }
 
+
+
+  
   /**
    * Mobile nav toggle
    */
@@ -260,40 +263,23 @@
   new PureCounter();
 
 
+
+
+
+
+})()
+
   //Calcul def actual year -2018
   var anneeActuel = new Date().getFullYear();
 
   // Calcul de la différence entre l'année actuelle et 2018
   var difference = anneeActuel - 2018;
 
+  var differenceElement = document.getElementById("differenceAnnees");
+if (differenceElement) {
+  differenceElement.innerHTML = difference;
+}
   // Fonction pour mettre à jour le texte
-  function mettreAJourDifference() {
-    document.getElementById("differenceAnnees").innerHTML = difference;
-  }
-
-  document.addEventListener("DOMContentLoaded", function () {
-    var dateNaissance = new Date("20 July 1993");
-    var dateActuelle = new Date();
-
-    var age = dateActuelle.getFullYear() - dateNaissance.getFullYear();
-
-    // Vérifier si l'anniversaire de cette année est déjà passé
-    if (
-      dateActuelle.getMonth() < dateNaissance.getMonth() ||
-      (dateActuelle.getMonth() === dateNaissance.getMonth() && dateActuelle.getDate() < dateNaissance.getDate())
-    ) {
-      age--;
-    }
-
-    document.getElementById('age').innerHTML = age + " ans";
-  });
-
-
-
-  // Appel de la fonction lors du chargement de la page
-  window.onload = mettreAJourDifference;
-
-})()
 
 function afficherContenu() {
   var xhttp = new XMLHttpRequest();
@@ -306,6 +292,29 @@ function afficherContenu() {
   xhttp.send();
 }
 
+function mettreAJourDifference() {
+  document.getElementById("differenceAnnees").innerHTML = difference;
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  var dateNaissance = new Date("20 July 1993");
+  var dateActuelle = new Date();
+
+  var age = dateActuelle.getFullYear() - dateNaissance.getFullYear();
+
+  // Vérifier si l'anniversaire de cette année est déjà passé
+  if (
+    dateActuelle.getMonth() < dateNaissance.getMonth() ||
+    (dateActuelle.getMonth() === dateNaissance.getMonth() && dateActuelle.getDate() < dateNaissance.getDate())
+  ) {
+    age--;
+  }
+
+  var ageElement = document.getElementById('age');
+if (ageElement) {
+  ageElement.innerHTML = age + " ans";
+}
+});
 
 function afficherPopup(url) {
   // Créer l'élément du popup
